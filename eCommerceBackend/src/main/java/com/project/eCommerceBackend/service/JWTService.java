@@ -2,14 +2,12 @@ package com.project.eCommerceBackend.service;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.project.eCommerceBackend.api.model.LoginBody;
 import com.project.eCommerceBackend.model.LocalUser;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.Optional;
 
 @Service
 public class JWTService {
@@ -37,6 +35,10 @@ public class JWTService {
                 .withExpiresAt(new Date(System.currentTimeMillis() + (1000 * expiryInSeconds)))
                 .withIssuer(issuer)
                 .sign(algorithm);
+    }
+
+    public String getUserName(String token) {
+        return JWT.decode(token).getClaim(USERNAME_KEY).asString();
     }
 
 }
