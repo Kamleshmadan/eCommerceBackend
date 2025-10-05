@@ -12,9 +12,9 @@ public class UserService {
     @Autowired
     LocalUserDAO localUserDAO;
 
-//    @Autowired
-//    EncryptionService encryptionService;
-//
+    @Autowired
+    EncryptionService encryptionService;
+
 //    @Autowired
 //    JWTService jwtService;
 
@@ -27,7 +27,7 @@ public class UserService {
             user.setFirstName(registrationBody.getFirstName());
             user.setLastName(registrationBody.getLastName());
             user.setEmail(registrationBody.getEmail());
-            user.setPassword(registrationBody.getPassword());
+            user.setPassword(encryptionService.encryptPassword(registrationBody.getPassword()));
             return localUserDAO.save(user);
         }
     }
