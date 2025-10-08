@@ -1,5 +1,6 @@
 package com.project.eCommerceBackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,8 +15,9 @@ public class Inventory {
     @Column(name = "quantity", nullable = false)
     private Integer quantiy;
 
+    @JsonIgnore
     @OneToOne(optional = false, orphanRemoval = true)
-    @JoinColumn(name = "produce_id", nullable = false, unique = true)
+    @JoinColumn(name = "product_id", nullable = false, unique = true)
     private Product product;
 
     public long getId() {
