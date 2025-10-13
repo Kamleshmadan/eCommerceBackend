@@ -6,32 +6,30 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
-/**
- * The information required to register a user.
- */
+
 public class RegistrationBody {
 
-    /** The username. */
+
     @NotNull
     @NotBlank
-    @Size(min=3, max=255)
+    @Size(min = 3, max = 255)
     private String userName;
-    /** The email. */
+
     @NotNull
     @NotBlank
     @Email
     private String email;
-    /** The password. */
+
     @NotNull
     @NotBlank
     @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$")
-    @Size(min=6, max=32)
+    @Size(min = 6, max = 32)
     private String password;
-    /** The first name. */
+
     @NotNull
     @NotBlank
     private String firstName;
-    /** The last name. */
+
     @NotNull
     @NotBlank
     private String lastName;
@@ -54,5 +52,25 @@ public class RegistrationBody {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
