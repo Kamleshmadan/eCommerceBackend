@@ -2,11 +2,13 @@ package com.project.eCommerceBackend.service;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.project.eCommerceBackend.model.LocalUser;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.Date;
 
 @Service
@@ -41,13 +43,14 @@ public class JWTService {
     public String generateVerificationJWT(LocalUser user) {
         return JWT.create()
                 .withClaim(EMAIL_KEY, user.getEmail())
-                .withExpiresAt(new Date(System.currentTimeMillis() + (1000 * expiryInSeconds)))
+                .withExpiresAt(Date.from(Instant.now().plusSeconds(expiryInSeconds)))
                 .withIssuer(issuer)
                 .sign(algorithm);
     }
 
     public String getUserName(String token) {
-        return JWT.decode(token).getClaim(USERNAME_KEY).asString();
+        DecodedJWT jwt=JWT.require(algorithm).withIssuer(issuer).build().verify(token);
+        return jwt.getClaim(USERNAME_KEY).asString();
     }
 
 }
