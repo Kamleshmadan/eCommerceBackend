@@ -1,6 +1,7 @@
 package com.project.eCommerceBackend.service;
 
 import com.project.eCommerceBackend.exception.EmailFailureException;
+import com.project.eCommerceBackend.model.LocalUser;
 import com.project.eCommerceBackend.model.VerificationToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,6 +36,20 @@ public class EmailService {
         try {
             javaMailSender.send(message);
         } catch (MailException ex) {
+            throw new EmailFailureException();
+        }
+    }
+
+    public void sendPasswordResetEmail(LocalUser user, String token) throws EmailFailureException {
+
+        SimpleMailMessage message = makeMailMessage();
+        message.setTo(user.getEmail());
+        message.setSubject("Your password reset request link.");
+        message.setText("You requested a password reset on our website. Please find the link below to be able to reset your password.\n" + url +
+                "/auth/reset?token=" + token);
+        try{
+            javaMailSender.send(message);
+        }catch (MailException ex) {
             throw new EmailFailureException();
         }
     }
