@@ -50,6 +50,7 @@ public class AutheticationController {
             response.setFailureReason(reason);
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(response);
         } catch (EmailFailureException ex) {
+            System.out.println("EmailFailureException while login: " + ex.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
         if (jwt == null) {
