@@ -34,10 +34,7 @@ It provides RESTful APIs for managing users, products, orders, and authenticatio
 ## 🧭 Future Enhancements
 
 ✅ Order creation and tracking
-
 ✅ Create Admin Role, Add admin dashboard and analytics
-
 ✅ Create a new product (admin only)
-
 ✅ Implement payment gateway integration
 
