@@ -5,21 +5,6 @@ It provides RESTful APIs for managing users, products, orders, and authenticatio
 
 ---
 
-## 📚 Table of Contents
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Project Structure](#-project-structure)
-- [Configuration](#-configuration)
-- [Run the Project](#-run-the-project)
-- [API Endpoints](#-api-endpoints)
-- [Testing](#-testing)
-- [Build JAR](#-build-jar)
-- [Future Enhancements](#-future-enhancements)
-- [Author](#-author)
-- [License](#-license)
-
----
-
 ## 🚀 Features
 
 ✅ User registration and login  
@@ -46,4 +31,11 @@ It provides RESTful APIs for managing users, products, orders, and authenticatio
 | Security | **Spring Security (JWT ready)** |
 
 ---
+
+## 🧭 Future Enhancements
+
+✅ Order creation and tracking 
+✅ Create Admin Role, Add admin dashboard and analytics
+✅ Create a new product (admin only)
+✅ Implement payment gateway integration
 
