@@ -9,7 +9,6 @@ It provides RESTful APIs for managing users, products, orders, and authenticatio
 
 ✅ User registration and login  
 ✅ Product management (CRUD APIs)  
-✅ Order creation and tracking  
 ✅ Database integration via JPA/Hibernate  
 ✅ Layered architecture (Controller → Service → Repository)  
 ✅ Exception handling and input validation  
