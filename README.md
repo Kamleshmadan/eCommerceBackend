@@ -36,3 +36,27 @@ It provides RESTful APIs for managing users, products, orders, and authenticatio
 ✅ Create Admin Role, Add admin dashboard and analytics  
 ✅ Create a new product (admin only)  
 ✅ Implement payment gateway integration
+
+---
+
+##  API Endpoints
+
+**Base URL:** 'http://localhost:8085'
+
+| Method   | Endpoint                                                 | Description                          | Auth Required? |
+|----------|----------------------------------------------------------|--------------------------------------|----------------|
+| `POST`   | `/auth/register`                                         | Register a new user                  | ❌             |
+| `POST`   | `/auth/login`                                            | Authenticate the user & issue token  | ❌             |
+| `GET`    | `/auth/me`                                               | Retrieve user profile by token       | ✅             |
+| `POST`   | `/auth/verify?token={token}`                             | Verify email address                 | ❌             |
+| `POST`   | `/auth/forgot?email={email}`                             | Send reset password link over mail   | ❌             |
+| `POST`   | `/auth/reset`                                            | Reset password                       | ❌             |
+| `GET`    | `/products`                                              | Get all products                     | ❌             |
+| `GET`    | `/user/{userId}/address`                                 | Get address of a user                | ✅             |
+| `POST`   | `/user/{userId}/address`                                 | Add a new address for user           | ✅             |
+| `PATCH`  | `/user/{userId}/address/{addressId}`                     | Update existing address              | ✅             |
+| `GET`    | `/cart/{userId}`                                         | Get cart products for user           | ✅             |
+| `POST`   | `/cart/{userId}/add?productId={id}&quantity={qty}`       | Add product to user's cart           | ✅             |
+| `PUT`    | `/cart/{userId}/update?productId={id}&quantity={qty}`    | Update quantity of product in cart   | ✅             |
+| `DELETE` | `/cart/{userId}/remove?productId={id}`                   | Remove product from cart             | ✅             |
+
